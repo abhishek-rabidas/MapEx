@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Getter
@@ -18,12 +19,12 @@ public abstract class BaseEntity extends AbstractPersistable<Long> {
     @Column(nullable = false, length = 64)
     private String uid;
 
-    private LocalDateTime createdOn;
+    private Date createdOn;
 
     @PrePersist
     private void preCreate() {
         this.uid = UUID.randomUUID().toString();
-        this.createdOn = LocalDateTime.now();
+        this.createdOn = new Date();
     }
 
 }

@@ -23,6 +23,7 @@ public class ExpenseMessageService {
         for (MessageRequest messageRequest : request) {
             Message message = new Message();
             message.setAmount(messageRequest.getAmount());
+            message.setDescription(messageRequest.getDescription());
             message.setTag(handleTag(messageRequest.getTag().trim(), messageRequest.getAmount()));
             messageRepository.save(message);
         }

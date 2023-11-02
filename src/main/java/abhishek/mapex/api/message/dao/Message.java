@@ -13,6 +13,8 @@ public class Message extends BaseEntity {
 
     private double amount;
 
+    private String description;
+
     @ManyToOne
     private Tag tag;
 }

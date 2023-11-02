@@ -10,4 +10,5 @@ import java.util.List;
 public class MessageRequest {
     private double amount;
     private String tag;
+    private String description;
 }
