@@ -1,0 +1,23 @@
+package abhishek.mapex.api.base.dao;
+
+import jakarta.persistence.PrePersist;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.jpa.domain.AbstractPersistable;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Getter
+@Setter
+public abstract class BaseEntity extends AbstractPersistable<Long> {
+    private String uid;
+    private LocalDateTime createdOn;
+
+    @PrePersist
+    private void preCreate() {
+        this.uid = UUID.randomUUID().toString();
+        this.createdOn = LocalDateTime.now();
+    }
+
+}
