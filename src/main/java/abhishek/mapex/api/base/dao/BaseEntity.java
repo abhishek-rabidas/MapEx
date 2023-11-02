@@ -1,5 +1,7 @@
 package abhishek.mapex.api.base.dao;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +12,12 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@MappedSuperclass
 public abstract class BaseEntity extends AbstractPersistable<Long> {
+
+    @Column(nullable = false, length = 64)
     private String uid;
+
     private LocalDateTime createdOn;
 
     @PrePersist

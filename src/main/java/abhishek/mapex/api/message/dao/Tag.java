@@ -14,13 +14,14 @@ import java.util.List;
 @Setter
 public class Tag extends BaseEntity {
 
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(nullable = true)
-    private double totalSpend;
+    private double totalSpend = 0;
 
     @Column(nullable = true)
-    private int useCount;
+    private int useCount = 0;
 
     @OneToMany(mappedBy = "tag")
     private List<Message> messages;
