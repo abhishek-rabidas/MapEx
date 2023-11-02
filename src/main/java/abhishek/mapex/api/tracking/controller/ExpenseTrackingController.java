@@ -1,6 +1,8 @@
 package abhishek.mapex.api.tracking.controller;
 
 import abhishek.mapex.api.tracking.dto.TagExpenseHistoryResponse;
+import abhishek.mapex.api.tracking.service.ExpenseTrackingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,8 +15,11 @@ import java.util.List;
 @RequestMapping("/api/v1/tracking")
 public class ExpenseTrackingController {
 
+    @Autowired
+    private ExpenseTrackingService service;
+
     @GetMapping("/tags")
     public ResponseEntity<List<TagExpenseHistoryResponse>> seeExpensesByTags(@RequestBody List<String> tags) {
-        return null;
+        return ResponseEntity.ok(service.seeExpensesByTags(tags));
     }
 }
