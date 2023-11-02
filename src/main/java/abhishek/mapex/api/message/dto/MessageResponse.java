@@ -2,12 +2,14 @@ package abhishek.mapex.api.message.dto;
 
 import abhishek.mapex.api.message.dao.Message;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.text.SimpleDateFormat;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class MessageResponse {
     private String date;
     private String time;
