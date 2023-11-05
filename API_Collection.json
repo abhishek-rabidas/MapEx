@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "e5dafd27-815a-439a-8749-dfd3a2e6c6a8",
+		"name": "MapEx",
+		"description": "Chat based expense tracking system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22230749"
+	},
+	"item": [
+		{
+			"name": "Save Message (Spending)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"amount\": 700,\r\n        \"tag\": \"Dinner\",\r\n        \"description\": \" Paid for Dinner\"\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Messages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"message"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/message",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"message"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Nov 2023 14:32:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"date\": \"03-11-2023\",\n        \"time\": \"10:18\",\n        \"amount\": 200,\n        \"description\": \"Paid for lunch\"\n    },\n    {\n        \"date\": \"03-11-2023\",\n        \"time\": \"10:19\",\n        \"amount\": 300,\n        \"description\": \"Again Paid for lunch\"\n    },\n    {\n        \"date\": \"03-11-2023\",\n        \"time\": \"10:21\",\n        \"amount\": 700,\n        \"description\": \" Paid for Dinner\"\n    },\n    {\n        \"date\": \"05-11-2023\",\n        \"time\": \"19:44\",\n        \"amount\": 700,\n        \"description\": \" Paid for Dinner\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Track Expense By Date",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "03-11-2023"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/tracking/date",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tracking",
+						"date"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "RequestResponse Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "03-11-2023"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tracking/date",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tracking",
+								"date"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Nov 2023 14:32:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"history\": [\n        {\n            \"date\": \"03-11-2023\",\n            \"time\": \"10:18\",\n            \"amount\": 200,\n            \"description\": \"Paid for lunch\"\n        },\n        {\n            \"date\": \"03-11-2023\",\n            \"time\": \"10:19\",\n            \"amount\": 300,\n            \"description\": \"Again Paid for lunch\"\n        },\n        {\n            \"date\": \"03-11-2023\",\n            \"time\": \"10:21\",\n            \"amount\": 700,\n            \"description\": \" Paid for Dinner\"\n        }\n    ],\n    \"totalAmount\": 1200,\n    \"numOfPayments\": 3\n}"
+				}
+			]
+		},
+		{
+			"name": "Track Expense By Tag",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\"Lunch\", \"Dinner\"]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/tracking/tags",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"tracking",
+						"tags"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "RequestResponse Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"Lunch\", \"Dinner\"]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/tracking/tags",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"tracking",
+								"tags"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 05 Nov 2023 14:32:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"tag\": \"DINNER\",\n        \"totalSpent\": 1400,\n        \"usageTimes\": 2,\n        \"mostExpensiveAmount\": 700,\n        \"mostExpensiveDate\": \"03-11-2023\",\n        \"history\": [\n            {\n                \"date\": \"03-11-2023\",\n                \"time\": \"10:21\",\n                \"amount\": 700,\n                \"description\": \" Paid for Dinner\"\n            },\n            {\n                \"date\": \"05-11-2023\",\n                \"time\": \"19:44\",\n                \"amount\": 700,\n                \"description\": \" Paid for Dinner\"\n            }\n        ]\n    },\n    {\n        \"tag\": \"LUNCH\",\n        \"totalSpent\": 500,\n        \"usageTimes\": 2,\n        \"mostExpensiveAmount\": 300,\n        \"mostExpensiveDate\": \"03-11-2023\",\n        \"history\": [\n            {\n                \"date\": \"03-11-2023\",\n                \"time\": \"10:18\",\n                \"amount\": 200,\n                \"description\": \"Paid for lunch\"\n            },\n            {\n                \"date\": \"03-11-2023\",\n                \"time\": \"10:19\",\n                \"amount\": 300,\n                \"description\": \"Again Paid for lunch\"\n            }\n        ]\n    }\n]"
+				}
+			]
+		}
+	]
+}
