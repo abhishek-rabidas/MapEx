@@ -23,7 +23,7 @@ public class MessageController {
 
     @GetMapping
     public ResponseEntity<?> seeAllMessages() {
-        return null;
+        return ResponseEntity.ok(service.getAllMessages());
     }
 
 }
