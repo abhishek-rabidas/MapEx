@@ -3,6 +3,7 @@ package abhishek.mapex.api.message.service;
 import abhishek.mapex.api.message.dao.Message;
 import abhishek.mapex.api.message.dao.Tag;
 import abhishek.mapex.api.message.dto.MessageRequest;
+import abhishek.mapex.api.message.dto.MessageResponse;
 import abhishek.mapex.api.message.jpa.MessageRepository;
 import abhishek.mapex.api.message.jpa.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +43,9 @@ public class ExpenseMessageService {
 
         return tagRepository.save(tag);
     }
+
+    public List<MessageResponse> getAllMessages() {
+        return messageRepository.findAll().stream().map(MessageResponse::new).toList();
+    }
+
 }
