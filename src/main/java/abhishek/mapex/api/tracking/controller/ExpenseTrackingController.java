@@ -5,10 +5,7 @@ import abhishek.mapex.api.tracking.dto.TagExpenseHistoryResponse;
 import abhishek.mapex.api.tracking.service.ExpenseTrackingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,12 +16,12 @@ public class ExpenseTrackingController {
     @Autowired
     private ExpenseTrackingService service;
 
-    @GetMapping("/tags")
+    @PostMapping("/tags")
     public ResponseEntity<List<TagExpenseHistoryResponse>> seeExpensesByTags(@RequestBody List<String> tags) {
         return ResponseEntity.ok(service.seeExpensesByTags(tags));
     }
 
-    @GetMapping("/date")
+    @PostMapping("/date")
     public ResponseEntity<DateExpenseHistoryResponse> seeExpensesByDate(@RequestBody String date) {
         return ResponseEntity.ok(service.seeExpensesByDate(date));
     }
