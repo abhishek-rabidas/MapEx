@@ -26,6 +26,6 @@ public class ExpenseTrackingController {
 
     @GetMapping("/date")
     public ResponseEntity<DateExpenseHistoryResponse> seeExpensesByDate(@RequestBody String date) {
-
+        return ResponseEntity.ok(service.seeExpensesByDate(date));
     }
 }
