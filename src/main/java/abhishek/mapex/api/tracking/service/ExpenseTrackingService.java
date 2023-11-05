@@ -3,6 +3,7 @@ package abhishek.mapex.api.tracking.service;
 import abhishek.mapex.api.message.dao.Tag;
 import abhishek.mapex.api.message.jpa.MessageRepository;
 import abhishek.mapex.api.message.jpa.TagRepository;
+import abhishek.mapex.api.tracking.dto.DateExpenseHistoryResponse;
 import abhishek.mapex.api.tracking.dto.TagExpenseHistoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +37,9 @@ public class ExpenseTrackingService {
         }
 
         return responses;
+    }
+
+    public DateExpenseHistoryResponse seeExpensesByDate(String date) {
+        return null;
     }
 }

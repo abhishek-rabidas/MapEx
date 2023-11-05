@@ -1,5 +1,6 @@
 package abhishek.mapex.api.tracking.controller;
 
+import abhishek.mapex.api.tracking.dto.DateExpenseHistoryResponse;
 import abhishek.mapex.api.tracking.dto.TagExpenseHistoryResponse;
 import abhishek.mapex.api.tracking.service.ExpenseTrackingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,10 @@ public class ExpenseTrackingController {
     @GetMapping("/tags")
     public ResponseEntity<List<TagExpenseHistoryResponse>> seeExpensesByTags(@RequestBody List<String> tags) {
         return ResponseEntity.ok(service.seeExpensesByTags(tags));
+    }
+
+    @GetMapping("/date")
+    public ResponseEntity<DateExpenseHistoryResponse> seeExpensesByDate(@RequestBody String date) {
+
     }
 }
